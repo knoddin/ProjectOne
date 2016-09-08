@@ -5,3 +5,9 @@
 
 // use require without a reference to ensure a file is bundled
 require('./example');
+
+const newDisplayLetter = require('./maingame');
+
+$(document).ready(function () {
+  newDisplayLetter.displayLetter();
+});
