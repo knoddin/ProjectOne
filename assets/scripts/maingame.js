@@ -1,6 +1,6 @@
 'use strict';
 
-let boardArray = [0,1,2,3,4,5,6,7,8];
+let rowOne = [0,1,2,3,4,5,6,7,8];
 
 let newBoard = [];
 let playerX = 1;
@@ -14,7 +14,8 @@ const createBoard = function() {
     newTileDiv[i] = boardArray[i];
     newTileDiv.addEventListener('click', isXO);
     gameboardID.appendChild(newTileDiv);
-    console.log("I am in createBoard");
+    newBoard.push(boardArray[i]);
+    console.log(newBoard);
   }
 };
 
@@ -30,22 +31,6 @@ const isXO = function(){
   }
 };
 
-// const addHandlers = () => {
-//   $('#1').on('click', displayLetter);
-// };
-//
-// $('.cell').on('click', function(){
-//   //
-// });
-//
-// module.exports = {
-//   displayLetter,
-//   addHandlers
-// };
-//
-// //winning combos
-
-//
 module.exports = {
   createBoard,
   isXO,
