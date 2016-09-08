@@ -4,10 +4,11 @@
 // var example = require('./example');
 
 // use require without a reference to ensure a file is bundled
-require('./example');
 
-const newDisplayLetter = require('./maingame');
+
+const handlers = require('./maingame');
+
 
 $(document).ready(function () {
-  newDisplayLetter.displayLetter();
+  handlers.createBoard();
 });
