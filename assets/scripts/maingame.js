@@ -3,6 +3,7 @@
 let boardArray = [0,1,2,3,4,5,6,7,8];
 
 let newBoard = [];
+let playerX = 1;
 
 let gameboardID = document.getElementById("game-board");
 
@@ -17,43 +18,18 @@ const createBoard = function() {
   }
 };
 
-
 const isXO = function(){
-  let playerX = 1;
+  event.preventDefault();
   if (playerX === 1) {
-    document.getElementsByClassName('tile').innerHTML = "X";
-    newBoard.push(this.boardArray[i]);
-    console.log(newBoard);
+    this.innerHTML = "X";
+    playerX = 0;
   }
   else {
     this.innerHTML = "O";
-  }
-  if (newBoard.length === 3) {
-    isWin(newBoard);
-    newBoard = [];
+    playerX = 1;
   }
 };
 
-
-// let displayLetter = function(box){
-//   event.preventDefault();
-//
-//   let playerX = 1;
-//   let boardArrayX=[];
-//   let boardArrayO=[];
-//
-//   if (playerX === 1) {
-//     document.getElementById(box).innerHTML = "X";
-//     boardArrayX.push(box);
-//     playerX = 0;
-//   }
-//   else {
-//     document.getElementById(box).innerHTML = "O";
-//     boardArrayO.push(box);
-//     playerX = 1;
-//   }
-// };
-//
 // const addHandlers = () => {
 //   $('#1').on('click', displayLetter);
 // };
@@ -72,4 +48,5 @@ const isXO = function(){
 //
 module.exports = {
   createBoard,
+  isXO,
 };
