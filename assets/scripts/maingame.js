@@ -11,26 +11,28 @@ const createBoard = function() {
     let newTileDiv = document.createElement('div');
     newTileDiv.className = 'tile';
     newTileDiv[i] = boardArray[i];
-    // newTileDiv.addEventListener('click', isXO);
+    newTileDiv.addEventListener('click', isXO);
     gameboardID.appendChild(newTileDiv);
     console.log("I am in createBoard");
   }
 };
 
-// const isXO = function(){
-//   let playerX = 1;
-//   if (playerX === 1) {
-//     document.getElementsByClassName('tile').innerHTML = "X";
-//     newBoard.push(this.boardArray[i]);
-//     console.log(newBoard);
-//   }
-//   else {
-//     this.innerHTML = "O";
-//   }
-  // if (newBoard.length === 3) {
-  //   isWin(newBoard);
-  //   newBoard = [];
-  // }
+
+const isXO = function(){
+  let playerX = 1;
+  if (playerX === 1) {
+    document.getElementsByClassName('tile').innerHTML = "X";
+    newBoard.push(this.boardArray[i]);
+    console.log(newBoard);
+  }
+  else {
+    this.innerHTML = "O";
+  }
+  if (newBoard.length === 3) {
+    isWin(newBoard);
+    newBoard = [];
+  }
+};
 
 
 // let displayLetter = function(box){
