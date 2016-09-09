@@ -11,4 +11,8 @@ const handlers = require('./maingame');
 
 $(document).ready(function () {
   handlers.createBoard();
+  handlers.onClick();
+  handlers.winCondition();
+  handlers.clearBoard();
+
 });
