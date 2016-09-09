@@ -3,13 +3,16 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 
 @import './colors';
 
+// $unit: 30px;
+// $width: (2 * $unit);
+// $height: (2 * $unit);
 
-.board {
+.game-board {
   display: inline-block;
+  height: 80%;
   margin: 0 25%;
   text-align: center;
   width: 50%;
-  // height: 80%;
   // margin: 0 25%;
   // text-align: center;
   // width: 50%;
@@ -18,11 +21,10 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 .tile {
   background-color: $tile-color;
   border-color: $border-color;
-  border-radius: 10px;
-  border-style: solid;
-  float: left;
   height: 150px;
-  margin: 0;
+  width: 150px;
   text-align: center;
-  width: 30%;
+  float: left;
+  border-radius: 10px;
+  margin: 2%;
 }

@@ -1,7 +1,8 @@
 'use strict';
 
-let rowOne = [0,1,2,3,4,5,6,7,8];
+const getFormFields = require('../../lib/get-form-fields');
 
+let boardArray = [0,1,2,3,4,5,6,7,8];
 let newBoard = [];
 let playerX = 1;
 
@@ -14,12 +15,25 @@ const createBoard = function() {
     newTileDiv[i] = boardArray[i];
     newTileDiv.addEventListener('click', isXO);
     gameboardID.appendChild(newTileDiv);
-    newBoard.push(boardArray[i]);
-    console.log(newBoard);
+    console.log("I am in createBoard");
   }
 };
 
-const isXO = function(){
+// const onTileClick = function(event){
+//   event.preventDefault();
+//   let data= getFormFields(event.target);
+//   if (playerX === 1) {
+//     this.innerHTML = "X";
+//     gameObj.board.push($);
+//     playerX = 0;
+//   }
+//     else {
+//       this.innerHTML = "O";
+//       playerX = 1;
+//     }
+// };
+
+const isXO = function(event){
   event.preventDefault();
   if (playerX === 1) {
     this.innerHTML = "X";
