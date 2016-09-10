@@ -7,6 +7,10 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 // $width: (2 * $unit);
 // $height: (2 * $unit);
 
+h1 {
+  text-align: center;
+}
+
 .game-board {
   display: inline-block;
   height: 80%;
