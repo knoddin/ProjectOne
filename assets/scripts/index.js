@@ -1,18 +1,15 @@
 'use strict';
 
-// user require with a reference to bundle the file and use it in this file
-// var example = require('./example');
-//
-// use require without a reference to ensure a file is bundled
-
-
 const handlers = require('./maingame');
+const authEvents = require('./auth/events.js');
 
+$(document).ready(function () {
+  authEvents.addHandlers();
+});
 
 $(document).ready(function () {
   handlers.createBoard();
   handlers.onClick();
-  handlers.winCondition();
-  handlers.clearBoard();
-
+  // handlers.winCondition();
+  // handlers.clearBoard();
 });

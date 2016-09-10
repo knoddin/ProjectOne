@@ -8,7 +8,6 @@ let player = 1;
 
 let turns=0;
 
-
 let gameboardID = document.getElementById("game-board");
 
 const createBoard = function() {
@@ -43,38 +42,37 @@ Array.prototype.insert = function (index, item) {
 };
 
 
-function winCondition(gameBoard, turns){
-  event.preventDefault();
-  //across
-  if (((gameBoard[0] === gameboard[2]) && (gameBoard[1] === gameBoard[2]))||
-  ((gameBoard[3] === gameboard[5]) && (gameBoard[3] === gameBoard[4])) ||
-  ((gameBoard[6] === gameboard[8]) && (gameBoard[6] === gameBoard[7]))) {
-  this.wins=true;
-  }
-//down
-  else if (((gameBoard[0] === gameboard[6]) && (gameBoard[0] === gameBoard[3])) ||
-  ((gameBoard[1] === gameboard[7]) && (gameBoard[1] === gameBoard[4])) ||
-  ((gameBoard[2] === gameboard[5]) && (gameBoard[2] === gameBoard[8]))) {
-  this.wins=true;
-  }
-  //diagnal
-  else if (((gameBoard[0] === gameboard[8]) && (gameBoard[0] === gameBoard[4])) ||
-  ((gameBoard[2] === gameboard[6]) && (gameBoard[2] === gameBoard[4]))) {
-  this.wins=true;
-  }
-  else if (gameBoard.length = 9) {
-    // clearBoard();
-  }
-};
-
-// const clearBoard = function(){
-//   $('#tile').empty();
-//   gameBoard = [];
-// };
+// function winCondition(){
+//   //across
+//   if (((gameBoard[0] === gameboard[2]) && (gameBoard[1] === gameBoard[2]))||
+//   ((gameBoard[3] === gameboard[5]) && (gameBoard[3] === gameBoard[4])) ||
+//   ((gameBoard[6] === gameboard[8]) && (gameBoard[6] === gameBoard[7]))) {
+//   this.wins=true;
+//   }
+// //down
+//   else if (((gameBoard[0] === gameboard[6]) && (gameBoard[0] === gameBoard[3])) ||
+//   ((gameBoard[1] === gameboard[7]) && (gameBoard[1] === gameBoard[4])) ||
+//   ((gameBoard[2] === gameboard[5]) && (gameBoard[2] === gameBoard[8]))) {
+//   this.wins=true;
+//   }
+//   //diagnal
+//   else if (((gameBoard[0] === gameboard[8]) && (gameBoard[0] === gameBoard[4])) ||
+//   ((gameBoard[2] === gameboard[6]) && (gameBoard[2] === gameBoard[4]))) {
+//   this.wins=true;
+//   }
+//   else if (gameBoard.length = 9) {
+//   return false;
+//   }
+// }
+//
+// // const clearBoard = function(){
+// //   $('#tile').empty();
+// //   gameBoard = [];
+// // };
 
 module.exports = {
   createBoard,
   onClick,
-  winCondition,
+  // winCondition,
   // clearBoard,
 };

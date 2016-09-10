@@ -1,47 +1,47 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>TicTacToe</title>
 
       <script src="vendor.bundle.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="bundle.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body class="container-fluid">
       <h1>Tic.Tac.Toe.</h1>
-    <div id="game-board" class = "game-board">
-      <!-- <div class="row">
-        <div id="0" class="col-xs-4"></div>
-        <div id="1" class="col-xs-4"></div>
-        <div id="2" class="col-xs-4"></div>
+      <!-- <form id="sign-up"> -->
+        <!-- <fieldset>
+          <legend>Sign up!</legend>
+          <input type="email" name="credentials[email]" placeholder="Email">
+          <input type="password" name="credentials[password]" placeholder="Password">
+          <input type="password" name="credentials[password_confirmation]" placeholder="Confirm password">
+          <input type="submit" name="submit" value="Sign up!">
+        </fieldset> -->
+      <!-- </form> -->
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">
+        Sign Up</button>
+      <form id="sign-in">
+        <fieldset>
+          <legend>Sign in!</legend>
+          <input type="email" name="credentials[email]" placeholder="Email">
+          <input type="password" name="credentials[password]" placeholder="Password">
+          <input type="submit" name="submit" value="Sign in!">
+        </fieldset>
+      </form>
+      <form id="change-password">
+        <fieldset>
+          <legend>Change password!</legend>
+          <input type="password" name="passwords[old]" placeholder="Old Password">
+          <input type="password" name="passwords[new]" placeholder="New Password">
+          <input type="submit" name="submit" value="Change Password!">
+        </fieldset>
+      </form>
+      <form id="sign-out">
+        <fieldset>
+          <legend>Sign out!</legend>
+          <input type="submit" name="submit" value="Sign out!">
+        </fieldset>
+      </form>
+      <div id="game-board" class = "game-board">
       </div>
-      <div class="row">
-        <div id="3" class="col-xs-4"></div>
-        <div id="4" class="col-xs-4"></div>
-        <div id="5" class="col-xs-4"></div>
-      </div>
-      <div class="row">
-        <div id="6" class="col-xs-4"></div>
-        <div id="7" class="col-xs-4"></div>
-        <div id="8" class="col-xs-4"></div>
-      </div> -->
-  </div>
-  <!-- <div class = "player-score">
-      <h3 id="playerXScore">Player X</h3>
-      <h3 id="playerOScore">Player O</h3>
-  </div>
-  <form id="player-x-name">
-  <fieldset>
-    <legend>Player X</legend>
-    <input type="name" name="credentials[name]" placeholder="Your Name">
-    <input type="submit" name="submit" value="player-x-name">
-  </fieldset>
-  </form>
-  <form id="player-o-name">
-  <fieldset>
-    <legend>Player O</legend>
-    <input type="name" name="credentials[name]" placeholder="Your Name">
-    <input type="submit" name="submit" value="player-o-name">
-  </fieldset>
-  </form> -->
     </body>
 </html>
