@@ -3,10 +3,6 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 
 @import './colors';
 
-// $unit: 30px;
-// $width: (2 * $unit);
-// $height: (2 * $unit);
-
 h1 {
   text-align: center;
 }
@@ -17,9 +13,6 @@ h1 {
   margin: 0 25%;
   text-align: center;
   width: 50%;
-  // margin: 0 25%;
-  // text-align: center;
-  // width: 50%;
 }
 
 .tile {
