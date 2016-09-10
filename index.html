@@ -8,6 +8,68 @@
     </head>
     <body class="container-fluid">
       <h1>Tic.Tac.Toe.</h1>
+      <nav>
+        <button type="button" class="btn btn-primary navbar-right" data-toggle="modal" data-target="#signOut" data-whatever="@getbootstrap">Sign Out</button>
+        <button type="button" class="btn btn-primary navbar-right" data-toggle="modal" data-target="#changePassword" data-whatever="@getbootstrap">Change Password</button>
+        <button type="button" class="btn btn-primary navbar-right" data-toggle="modal" data-target="#signIn" data-whatever="@fat">Sign In</button>
+        <button type="button" class="btn btn-primary navbar-right" data-toggle="modal" data-target="#signUp" data-whatever="@mdo">Sign Up</button>
+      </nav>
+      <div class="modal fade" id="signUp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="signUpLabel">Sign Up</h4>
+            </div>
+            <div class="modal-body">
+              <form id="sign-up">
+                <fieldset>
+                  <input type="email" name="credentials[email]" placeholder="Email">
+                  <input type="password" name="credentials[password]" placeholder="Password">
+                  <input type="password" name="credentials[password_confirmation]" placeholder="Confirm password">
+                  <input type="submit" name="submit" value="Sign up!"">
+                </fieldset>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- <nav class = "navbar">
+        <button type="button" data-target="#sign-in" class="btn btn-default navbar-right" data-toggle="modal">Sign In</button>
+        <button type="button" data-target="#sign-out" class="btn btn-default navbar-right" data-toggle="modal">Sign Out</button>
+        <button type="button" data-target="#change-password" class="btn btn-default navbar-right" data-toggle="modal">Change Password</button>
+        <button type="button" data-target="#sign-up" class="btn btn-default navbar-right" data-toggle="modal">Sign Up</button>
+      </nav>
+      <div class="modal fade" id="sign-up" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="signUpLabel">Sign Up</h4>
+      </div>
+      <div class="modal-body">
+        <form id='signUp'>
+          <div class="form-group">
+            <input type="email" name="credentials[email]" placeholder="Email">
+            <input type="password" name="credentials[password]" placeholder="Password">
+            <input type="password" name="credentials[password_confirmation]" placeholder="Confirm password">
+            <input type="submit" name="submit" value="Sign up!">
+      </div>
+      <div class="form-group">
+            <label for="message-text" class="control-label">Message:</label>
+            <textarea class="form-control" id="message-text"></textarea>
+      </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Send message</button>
+      </div>
+    </div>
+  </div>
+  </div> -->
       <!-- <form id="sign-up"> -->
         <!-- <fieldset>
           <legend>Sign up!</legend>
@@ -17,8 +79,6 @@
           <input type="submit" name="submit" value="Sign up!">
         </fieldset> -->
       <!-- </form> -->
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">
-        Sign Up</button>
       <form id="sign-in">
         <fieldset>
           <legend>Sign in!</legend>
