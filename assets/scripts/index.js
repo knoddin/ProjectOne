@@ -10,6 +10,7 @@ $(document).ready(function () {
 $(document).ready(function () {
   handlers.createBoard();
   handlers.onClick();
+  handlers.addGameHandlers();
   // handlers.winCondition();
   // handlers.clearBoard();
 });
