@@ -32,7 +32,7 @@ const onClick = function(){
   else if (player === 0) {
     this.innerHTML = "O";
     gameBoard.insert(tileClicked, "O");
-    winCondition(gameBoard);
+    $('#tile').on('click', winCondition(gameBoard));
     player = 1;
     turns++;
   }
@@ -86,11 +86,14 @@ else {
 };
 
 
-const onNewGame = function() {
+const onNewGame = function(event) {
+  event.preventDefault();
   $('.tile').empty();
+  $('#game-board').empty();
   gameBoard.splice(0,9,"","","","","","","","","");
   turns = 0;
   player = 1;
+  createBoard(event);
   console.log(gameBoard);
 };
 
@@ -112,7 +115,7 @@ module.exports = {
   onClick,
   getFormFields,
   addGameHandlers,
-  winCondition,
+  winCondition
   // endGame
   // winCondition,
   // clearBoard,
