@@ -7,13 +7,13 @@
       <script src="bundle.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body class="container-fluid">
-      <h1>Tic.Tac.Toe.</h1>
       <nav>
         <button type="button" class="btn btn-primary navbar-right" data-toggle="modal" data-target="#signOut" data-whatever="@getbootstrap">Sign Out</button>
         <button type="button" class="btn btn-primary navbar-right" data-toggle="modal" data-target="#changePassword" data-whatever="@getbootstrap">Change Password</button>
         <button type="button" class="btn btn-primary navbar-right" data-toggle="modal" data-target="#signIn" data-whatever="@fat">Sign In</button>
         <button type="button" class="btn btn-primary navbar-right" data-toggle="modal" data-target="#signUp" data-whatever="@mdo">Sign Up</button>
       </nav>
+
       <div class="modal fade" id="signUp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -92,8 +92,12 @@
           </div>
         </div>
       </div>
-
+      <h1>Tic.Tac.Toe.</h1>
+      <div class="player-wins"></div>
       <div id="game-board" class = "game-board">
+      </div>
+      <div id="clear-board">
+        <button type="submit">Clear Board</button>
       </div>
       <div id="new-game">
         <button type="submit">New Game</button>

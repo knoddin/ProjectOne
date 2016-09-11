@@ -2,10 +2,13 @@
 
 const getFormFields = require('../../lib/get-form-fields');
 
+const api = require('./games/api');
+const ui = require('./games/ui');
+
 let gameBoard = ["","","","","","","","",""];
 let player = 1;
 let turns = 0;
-let win = false;
+let over = false;
 
 
 let gameboardID = document.getElementById("game-board");
@@ -57,7 +60,8 @@ const winCondition = function(input){
 ((input[0] === "X") && (input[4] === "X") && (input[8] === "X")) ||
 ((input[2] === "X") && (input[4] === "X") && (input[6] === "X"))) {
   console.log("X wins");
-  win = true;
+  over = true;
+  document.getElementById('player-wins').innerHTML = "Player X Wins!";
 }
 else if
 (((input[0] === "O") && (input[1] === "O") && (input[2] === "O"))||
@@ -70,31 +74,65 @@ else if
 //diag for x
 ((input[0] === "O") && (input[4] === "O") && (input[8] === "O")) ||
 ((input[2] === "O") && (input[4] === "O") && (input[6] === "O"))) {
-  console.log("O wins");
-  console.log(gameBoard);
-  win = true;
+  over = true;
+  document.getElementById('player-wins').innerHTML = "Player O Wins!";
 }
 else if (input[0] !== "" && input[1] !== "" && input[2] !== "" &&
 input[3] !== "" && input[4] !== "" && input[5] !== "" &&
 input[6] !== "" && input[7] !== "" && input[8] !== "") {
-  console.log("draw");
-  win = false;
+  over = true;
+  document.getElementById('player-wins').innerHTML = "Nobody Wins!";
 }
 else {
-  win = false;
+  over = false;
 }
 };
 
 
-const onNewGame = function(event) {
-  event.preventDefault();
+
+const clearBoard = function() {
   $('.tile').empty();
   $('#game-board').empty();
+  $('#player-wins').empty();
   gameBoard.splice(0,9,"","","","","","","","","");
   turns = 0;
   player = 1;
   createBoard(event);
+  console.log("I am in clear board game");
   console.log(gameBoard);
+};
+
+//this will happen only after sign in
+const newGame = function(event){
+  event.preventDefault();
+  clearBoard();
+  let data = {};
+    api.newGame(data)
+    .done(ui.newGameSuccess)
+    .fail(ui.onError);
+};
+
+const onUpdateGame = function(cell){
+  event.preventDefault();
+ let table = document.getElementsByClassName('tile');
+ for (let i =0; i < gameBoard.length; i++){
+   cell = i;
+ }
+ let cellValue = table[cell].innerHTML;
+
+  console.log("cellValue");
+  let data = {
+        "game": {
+          "cell": {
+            "index": cell,
+            "value": cellValue
+          },
+          "over": false
+        }
+      };
+  api.updateGame(data)
+    .done(ui.updateGameSuccess)
+    .fail(ui.failure);
 };
 
 // const endGame = function() {
@@ -107,15 +145,18 @@ const onNewGame = function(event) {
 // }
 
 const addGameHandlers = () => {
-  $('#new-game').on('click', onNewGame);
+  $('#clear-board').on('click', clearBoard);
+  $('#new-game').on('click', newGame);
+  $('#save-game').on('click', onUpdateGame);
 };
+
 
 module.exports = {
   createBoard,
   onClick,
   getFormFields,
   addGameHandlers,
-  winCondition
+  winCondition,
   // endGame
   // winCondition,
   // clearBoard,
