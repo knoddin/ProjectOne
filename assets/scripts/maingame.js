@@ -31,6 +31,7 @@ const onClick = function(){
     $('#tile').on('click', winCondition(gameBoard));
     player = 0;
     turns++;
+    console.log(gameBoard);
   }
   else if (player === 0) {
     this.innerHTML = "O";
@@ -48,8 +49,7 @@ Array.prototype.insert = function (index, item) {
 
 const winCondition = function(input){
   //across for x
-  console.log(gameBoard);
-  if (((input[0] === "X") && (input[1] === "X") && (input[2] === "X"))||
+if (((input[0] === "X") && (input[1] === "X") && (input[2] === "X"))||
 ((input[3] === "X") && (input[4] === "X") && (input[5] === "X")) ||
 ((input[6] === "X") && (input[7] === "X") && (input[8] === "X")) ||
 //down for x
@@ -60,8 +60,8 @@ const winCondition = function(input){
 ((input[0] === "X") && (input[4] === "X") && (input[8] === "X")) ||
 ((input[2] === "X") && (input[4] === "X") && (input[6] === "X"))) {
   console.log("X wins");
-  over = true;
   document.getElementById('player-wins').innerHTML = "Player X Wins!";
+  return true;
 }
 else if
 (((input[0] === "O") && (input[1] === "O") && (input[2] === "O"))||
@@ -74,21 +74,19 @@ else if
 //diag for x
 ((input[0] === "O") && (input[4] === "O") && (input[8] === "O")) ||
 ((input[2] === "O") && (input[4] === "O") && (input[6] === "O"))) {
-  over = true;
   document.getElementById('player-wins').innerHTML = "Player O Wins!";
+  return true;
 }
 else if (input[0] !== "" && input[1] !== "" && input[2] !== "" &&
 input[3] !== "" && input[4] !== "" && input[5] !== "" &&
 input[6] !== "" && input[7] !== "" && input[8] !== "") {
-  over = true;
   document.getElementById('player-wins').innerHTML = "Nobody Wins!";
+  return true;
 }
 else {
-  over = false;
+  return false;
 }
 };
-
-
 
 const clearBoard = function() {
   $('.tile').empty();
@@ -112,28 +110,13 @@ const newGame = function(event){
     .fail(ui.onError);
 };
 
-const onUpdateGame = function(cell){
-  event.preventDefault();
- let table = document.getElementsByClassName('tile');
- for (let i =0; i < gameBoard.length; i++){
-   cell = i;
- }
- let cellValue = table[cell].innerHTML;
-
-  console.log("cellValue");
-  let data = {
-        "game": {
-          "cell": {
-            "index": cell,
-            "value": cellValue
-          },
-          "over": false
-        }
-      };
-  api.updateGame(data)
-    .done(ui.updateGameSuccess)
-    .fail(ui.failure);
-};
+// const onUpdateGame = function(event){
+//   event.preventDefault();
+//   let data = getFormFields(event.target);
+//   api.updateGame(data)
+//     .done(ui.updateGameSuccess)
+//     .fail(ui.failure);
+// };
 
 // const endGame = function() {
 //   if (win = true){
@@ -147,7 +130,6 @@ const onUpdateGame = function(cell){
 const addGameHandlers = () => {
   $('#clear-board').on('click', clearBoard);
   $('#new-game').on('click', newGame);
-  $('#save-game').on('click', onUpdateGame);
 };
 
 

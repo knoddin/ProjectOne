@@ -3,6 +3,7 @@
 const app = require('../app');
 
 const newGame = (data) =>{
+  console.log("I am in new game");
   return $.ajax({
     url: app.host + '/games',
     method: 'POST',
