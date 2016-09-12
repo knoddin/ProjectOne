@@ -15,7 +15,7 @@ const newGame = (data) =>{
 
 const updateGame = (tileClicked, player, over) => {
   return $.ajax({
-    url: app.host + '/games/' + app.game.id,
+    url: app.host + '/games/:' + app.game.id,
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + app.user.token,

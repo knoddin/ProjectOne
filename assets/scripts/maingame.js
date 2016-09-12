@@ -15,11 +15,11 @@ let gameboardID = document.getElementById("game-board");
 
 const createBoard = function() {
   for (let i = 0; i < gameBoard.length; i++) {
-    let newTileDiv = document.createElement('div');
-    newTileDiv.className = 'tile';
-    newTileDiv.setAttribute('data-id', i);
-    gameboardID.appendChild(newTileDiv);
-    $(newTileDiv).one('click', onClick);
+    let newTile = document.createElement('div');
+    newTile.className = 'tile';
+    newTile.setAttribute('data-id', i);
+    gameboardID.appendChild(newTile);
+    $(newTile).one('click', onClick);
   }
 };
 
@@ -59,6 +59,7 @@ if (((input[0] === "X") && (input[1] === "X") && (input[2] === "X"))||
 ((input[0] === "X") && (input[4] === "X") && (input[8] === "X")) ||
 ((input[2] === "X") && (input[4] === "X") && (input[6] === "X"))) {
   document.getElementById('player-wins').innerHTML = "Player X Wins!";
+  $('.tile').off('click');
   return true;
 }
 else if
@@ -73,12 +74,14 @@ else if
 ((input[0] === "O") && (input[4] === "O") && (input[8] === "O")) ||
 ((input[2] === "O") && (input[4] === "O") && (input[6] === "O"))) {
   document.getElementById('player-wins').innerHTML = "Player O Wins!";
+  $('.tile').off('click');
   return true;
 }
 else if (input[0] !== "" && input[1] !== "" && input[2] !== "" &&
 input[3] !== "" && input[4] !== "" && input[5] !== "" &&
 input[6] !== "" && input[7] !== "" && input[8] !== "") {
   document.getElementById('player-wins').innerHTML = "Nobody Wins!";
+  $('.tile').off('click');
   return true;
 }
 else {
