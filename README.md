@@ -1,7 +1,7 @@
 ```md
 new readme.
 
-Tic Tac Toe URL:
+Tic Tac Toe URL: https://knoddin.github.io/ProjectOne/
 
 Technologies Used:
 HTML
