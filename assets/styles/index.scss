@@ -3,6 +3,7 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 
 @import './colors';
 
+
 h1 {
   font-family: sans-serif;
   font-size: 60px;
@@ -12,7 +13,7 @@ h1 {
 
 #player-wins {
   text-align: center;
-
+  font-size: 40px;
 }
 
 .game-board {
@@ -26,11 +27,13 @@ h1 {
 
 .tile {
   background-color: $tile-color;
-  border-color: $border-color;
+  border: 5px solid $border-color;
   border-radius: 10px;
+  border-width: medium;
   float: left;
   height: 150px;
   margin: 2%;
+  padding-top: 5%;
   text-align: center;
   width: 150px;
 }

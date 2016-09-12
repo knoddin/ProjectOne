@@ -7,7 +7,6 @@ const ui = require('./ui');
 
 const onSignUp = function (event) {
   event.preventDefault();
-  console.log("I am in sign up");
   let data = getFormFields(event.target);
   api.signUp(data)
     .done(ui.success)

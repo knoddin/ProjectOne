@@ -26,15 +26,14 @@ const createBoard = function() {
 const onClick = function(){
   let tileClicked = $(this).attr('data-id');
   if (player === 1) {
-    this.innerHTML = "X";
+    this.innerHTML = '<img src = http://i.imgur.com/XvpQ5p5s.png>';
     gameBoard.insert(tileClicked, "X");
     $('#tile').on('click', winCondition(gameBoard));
     player = 0;
     turns++;
-    console.log(gameBoard);
   }
   else if (player === 0) {
-    this.innerHTML = "O";
+    this.innerHTML = '<img src = http://i.imgur.com/bPWrglqs.png>';
     gameBoard.insert(tileClicked, "O");
     $('#tile').on('click', winCondition(gameBoard));
     player = 1;
@@ -59,7 +58,6 @@ if (((input[0] === "X") && (input[1] === "X") && (input[2] === "X"))||
 //diag for x
 ((input[0] === "X") && (input[4] === "X") && (input[8] === "X")) ||
 ((input[2] === "X") && (input[4] === "X") && (input[6] === "X"))) {
-  console.log("X wins");
   document.getElementById('player-wins').innerHTML = "Player X Wins!";
   return true;
 }
@@ -96,12 +94,10 @@ const clearBoard = function() {
   turns = 0;
   player = 1;
   createBoard(event);
-  console.log("I am in clear board game");
-  console.log(gameBoard);
 };
 
 //this will happen only after sign in
-const newGame = function(event){
+const onNewGame = function(event){
   event.preventDefault();
   clearBoard();
   let data = {};
@@ -110,26 +106,9 @@ const newGame = function(event){
     .fail(ui.onError);
 };
 
-// const onUpdateGame = function(event){
-//   event.preventDefault();
-//   let data = getFormFields(event.target);
-//   api.updateGame(data)
-//     .done(ui.updateGameSuccess)
-//     .fail(ui.failure);
-// };
-
-// const endGame = function() {
-//   if (win = true){
-// saveGame();
-//   }
-//   else if ((win = false) && (gameBoard.length = 9)) {
-//
-//   }
-// }
-
 const addGameHandlers = () => {
   $('#clear-board').on('click', clearBoard);
-  $('#new-game').on('click', newGame);
+  $('#new-game').on('click', onNewGame);
 };
 
 
@@ -139,7 +118,4 @@ module.exports = {
   getFormFields,
   addGameHandlers,
   winCondition,
-  // endGame
-  // winCondition,
-  // clearBoard,
 };
