@@ -6,7 +6,6 @@ const api = require('./games/api');
 const ui = require('./games/ui');
 
 let gameBoard = ["","","","","","","","",""];
-let player = 1;
 let turns = 0;
 let over = false;
 
@@ -25,19 +24,19 @@ const createBoard = function() {
 
 const onClick = function(){
   let tileClicked = $(this).attr('data-id');
-  if (player === 1) {
+  if (turns % 2 === 0) {
     this.innerHTML = '<img src = http://i.imgur.com/XvpQ5p5s.png>';
     gameBoard.insert(tileClicked, "X");
     $('#tile').on('click', winCondition(gameBoard));
-    player = 0;
     turns++;
+    console.log(turns);
   }
-  else if (player === 0) {
+  else {
     this.innerHTML = '<img src = http://i.imgur.com/bPWrglqs.png>';
     gameBoard.insert(tileClicked, "O");
     $('#tile').on('click', winCondition(gameBoard));
-    player = 1;
     turns++;
+    console.log(turns);
   }
 };
 
@@ -60,6 +59,8 @@ if (((input[0] === "X") && (input[1] === "X") && (input[2] === "X"))||
 ((input[2] === "X") && (input[4] === "X") && (input[6] === "X"))) {
   document.getElementById('player-wins').innerHTML = "Player X Wins!";
   $('.tile').off('click');
+  over = true;
+  console.log(over);
   return true;
 }
 else if
@@ -75,6 +76,7 @@ else if
 ((input[2] === "O") && (input[4] === "O") && (input[6] === "O"))) {
   document.getElementById('player-wins').innerHTML = "Player O Wins!";
   $('.tile').off('click');
+  over = true;
   return true;
 }
 else if (input[0] !== "" && input[1] !== "" && input[2] !== "" &&
@@ -82,9 +84,11 @@ input[3] !== "" && input[4] !== "" && input[5] !== "" &&
 input[6] !== "" && input[7] !== "" && input[8] !== "") {
   document.getElementById('player-wins').innerHTML = "Nobody Wins!";
   $('.tile').off('click');
+  over = true;
   return true;
 }
 else {
+  over = false;
   return false;
 }
 };
@@ -95,7 +99,6 @@ const clearBoard = function() {
   $('#player-wins').empty();
   gameBoard.splice(0,9,"","","","","","","","","");
   turns = 0;
-  player = 1;
   createBoard(event);
 };
 
@@ -106,8 +109,16 @@ const onNewGame = function(event){
   let data = {};
     api.newGame(data)
     .done(ui.newGameSuccess)
-    .fail(ui.onError);
+    .fail(ui.failure);
 };
+
+const onUpdateGame = function(event){
+  event.preventDefault();
+
+  api.updateGame(tileClicked, player, over)
+  .done(ui.updateGameSuccess)
+  .fail(ui.failure);
+}
 
 const addGameHandlers = () => {
   $('#clear-board').on('click', clearBoard);
