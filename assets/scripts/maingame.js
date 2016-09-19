@@ -8,7 +8,8 @@ const ui = require('./games/ui');
 let gameBoard = ["","","","","","","","",""];
 let turns = 0;
 let over = false;
-let player = 'x';
+let player;
+
 
 let gameboardID = document.getElementById("game-board");
 
@@ -25,25 +26,16 @@ const createBoard = function() {
 const onClick = function(){
   let tileClicked = $(this).attr('data-id');
   if (turns % 2 === 0) {
-    player = 'x';
-    this.innerHTML = '<img src = http://i.imgur.com/XvpQ5p5s.png>';
-    gameBoard.insert(tileClicked, "X");
+      player = 'X';
+    }
+    else {
+      player = 'O';
+    }
+    $(this).html(player);
+    gameBoard.insert(tileClicked, player);
     turns++;
-    api.updateGame(tileClicked, player, over)
-      .done(ui.updateGameSuccess)
-      .fail(ui.failure);
+    // api.updateGame(tileClicked, player, over);
     winCondition(gameBoard);
-  }
-  else {
-    player = 'o';
-    this.innerHTML = '<img src = http://i.imgur.com/bPWrglqs.png>';
-    gameBoard.insert(tileClicked, "O");
-    turns++;
-    api.updateGame(tileClicked, player, over)
-      .done(ui.updateGameSuccess)
-      .fail(ui.failure);
-    winCondition(gameBoard);
-  }
 };
 
 Array.prototype.insert = function (index, item) {
@@ -105,6 +97,8 @@ const clearBoard = function() {
   gameBoard.splice(0,9,"","","","","","","","","");
   turns = 0;
   createBoard(event);
+  console.log("i am in clear");
+  console.log(gameBoard);
 };
 
 //this will happen only after sign in
