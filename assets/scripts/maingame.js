@@ -29,9 +29,9 @@ const onClick = function(){
     this.innerHTML = '<img src = http://i.imgur.com/XvpQ5p5s.png>';
     gameBoard.insert(tileClicked, "X");
     turns++;
-    // api.updateGame(tileClicked, player, over);
-      // .done(ui.updateGameSuccess)
-      // .fail(ui.failure);
+    api.updateGame(tileClicked, player, over)
+      .done(ui.updateGameSuccess)
+      .fail(ui.failure);
     winCondition(gameBoard);
   }
   else {
