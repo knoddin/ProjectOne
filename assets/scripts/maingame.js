@@ -8,7 +8,7 @@ const ui = require('./games/ui');
 let gameBoard = ["","","","","","","","",""];
 let turns = 0;
 let over = false;
-
+let player = 'x';
 
 let gameboardID = document.getElementById("game-board");
 
@@ -25,18 +25,24 @@ const createBoard = function() {
 const onClick = function(){
   let tileClicked = $(this).attr('data-id');
   if (turns % 2 === 0) {
+    player = 'x';
     this.innerHTML = '<img src = http://i.imgur.com/XvpQ5p5s.png>';
     gameBoard.insert(tileClicked, "X");
-    $('#tile').on('click', winCondition(gameBoard));
     turns++;
-    console.log(turns);
+    // api.updateGame(tileClicked, player, over);
+      // .done(ui.updateGameSuccess)
+      // .fail(ui.failure);
+    winCondition(gameBoard);
   }
   else {
+    player = 'o';
     this.innerHTML = '<img src = http://i.imgur.com/bPWrglqs.png>';
     gameBoard.insert(tileClicked, "O");
-    $('#tile').on('click', winCondition(gameBoard));
     turns++;
-    console.log(turns);
+    api.updateGame(tileClicked, player, over)
+      .done(ui.updateGameSuccess)
+      .fail(ui.failure);
+    winCondition(gameBoard);
   }
 };
 
@@ -45,43 +51,42 @@ Array.prototype.insert = function (index, item) {
 };
 
 
-const winCondition = function(input){
+const winCondition = function(gameBoard){
   //across for x
-if (((input[0] === "X") && (input[1] === "X") && (input[2] === "X"))||
-((input[3] === "X") && (input[4] === "X") && (input[5] === "X")) ||
-((input[6] === "X") && (input[7] === "X") && (input[8] === "X")) ||
+if (((gameBoard[0] === "X") && (gameBoard[1] === "X") && (gameBoard[2] === "X"))||
+((gameBoard[3] === "X") && (gameBoard[4] === "X") && (gameBoard[5] === "X")) ||
+((gameBoard[6] === "X") && (gameBoard[7] === "X") && (gameBoard[8] === "X")) ||
 //down for x
-((input[0] === "X") && (input[3] === "X") && (input[6] === "X")) ||
-((input[1] === "X") && (input[4] === "X") && (input[7] === "X")) ||
-((input[2] === "X") && (input[5] === "X") && (input[8] === "X")) ||
+((gameBoard[0] === "X") && (gameBoard[3] === "X") && (gameBoard[6] === "X")) ||
+((gameBoard[1] === "X") && (gameBoard[4] === "X") && (gameBoard[7] === "X")) ||
+((gameBoard[2] === "X") && (gameBoard[5] === "X") && (gameBoard[8] === "X")) ||
 //diag for x
-((input[0] === "X") && (input[4] === "X") && (input[8] === "X")) ||
-((input[2] === "X") && (input[4] === "X") && (input[6] === "X"))) {
+((gameBoard[0] === "X") && (gameBoard[4] === "X") && (gameBoard[8] === "X")) ||
+((gameBoard[2] === "X") && (gameBoard[4] === "X") && (gameBoard[6] === "X"))) {
   document.getElementById('player-wins').innerHTML = "Player X Wins!";
   $('.tile').off('click');
   over = true;
-  console.log(over);
   return true;
 }
 else if
-(((input[0] === "O") && (input[1] === "O") && (input[2] === "O"))||
-((input[3] === "O") && (input[4] === "O") && (input[5] === "O")) ||
-((input[6] === "O") && (input[7] === "O") && (input[8] === "O")) ||
+(((gameBoard[0] === "O") && (gameBoard[1] === "O") && (gameBoard[2] === "O"))||
+((gameBoard[3] === "O") && (gameBoard[4] === "O") && (gameBoard[5] === "O")) ||
+((gameBoard[6] === "O") && (gameBoard[7] === "O") && (gameBoard[8] === "O")) ||
 //down for x
-((input[0] === "O") && (input[3] === "O") && (input[6] === "O")) ||
-((input[1] === "O") && (input[4] === "O") && (input[7] === "O")) ||
-((input[2] === "O") && (input[5] === "O") && (input[8] === "O")) ||
+((gameBoard[0] === "O") && (gameBoard[3] === "O") && (gameBoard[6] === "O")) ||
+((gameBoard[1] === "O") && (gameBoard[4] === "O") && (gameBoard[7] === "O")) ||
+((gameBoard[2] === "O") && (gameBoard[5] === "O") && (gameBoard[8] === "O")) ||
 //diag for x
-((input[0] === "O") && (input[4] === "O") && (input[8] === "O")) ||
-((input[2] === "O") && (input[4] === "O") && (input[6] === "O"))) {
+((gameBoard[0] === "O") && (gameBoard[4] === "O") && (gameBoard[8] === "O")) ||
+((gameBoard[2] === "O") && (gameBoard[4] === "O") && (gameBoard[6] === "O"))) {
   document.getElementById('player-wins').innerHTML = "Player O Wins!";
   $('.tile').off('click');
   over = true;
   return true;
 }
-else if (input[0] !== "" && input[1] !== "" && input[2] !== "" &&
-input[3] !== "" && input[4] !== "" && input[5] !== "" &&
-input[6] !== "" && input[7] !== "" && input[8] !== "") {
+else if (gameBoard[0] !== "" && gameBoard[1] !== "" && gameBoard[2] !== "" &&
+gameBoard[3] !== "" && gameBoard[4] !== "" && gameBoard[5] !== "" &&
+gameBoard[6] !== "" && gameBoard[7] !== "" && gameBoard[8] !== "") {
   document.getElementById('player-wins').innerHTML = "Nobody Wins!";
   $('.tile').off('click');
   over = true;
@@ -112,13 +117,11 @@ const onNewGame = function(event){
     .fail(ui.failure);
 };
 
-const onUpdateGame = function(event){
-  event.preventDefault();
-
-  api.updateGame(tileClicked, player, over)
-  .done(ui.updateGameSuccess)
-  .fail(ui.failure);
-}
+// const onUpdateGame = function(index, value, over){
+//   api.updateGame(index, value, over)
+//   .done(ui.updateGameSuccess)
+//   .fail(ui.failure);
+// };
 
 const addGameHandlers = () => {
   $('#clear-board').on('click', clearBoard);
@@ -132,4 +135,5 @@ module.exports = {
   getFormFields,
   addGameHandlers,
   winCondition,
+  // onUpdateGame,
 };

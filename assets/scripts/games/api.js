@@ -3,6 +3,7 @@
 const app = require('../app');
 
 const newGame = (data) =>{
+  console.log("i am in newGame");
   return $.ajax({
     url: app.host + '/games',
     method: 'POST',
@@ -14,6 +15,7 @@ const newGame = (data) =>{
 };
 
 const updateGame = (tileClicked, player, over) => {
+  console.log(tileClicked, player, over);
   return $.ajax({
     url: app.host + '/games/' + app.game.id,
     method: 'PATCH',
@@ -21,14 +23,14 @@ const updateGame = (tileClicked, player, over) => {
       Authorization: 'Token token=' + app.user.token,
     },
     data:
-      {
-    "game": {
-      "cell": {
-        "index": tileClicked,
-        "value": player
-      },
-      "over": over
-    }
+    {
+      "game": {
+        "cell": {
+          "index": tileClicked,
+          "value": player
+        },
+        "over": over
+      }
   }}
 );};
 
