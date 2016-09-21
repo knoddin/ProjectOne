@@ -35,7 +35,7 @@ const onClick = function(){
     gameBoard.insert(tileClicked, player);
     turns++;
     winCondition(gameBoard);
-    // api.updateGame(tileClicked, player, over);
+    api.updateGame(tileClicked, player, over);
     console.log(tileClicked,player,over);
 };
 
