@@ -34,9 +34,9 @@ const onClick = function(){
     $(this).html(player);
     gameBoard.insert(tileClicked, player);
     turns++;
-    winCondition(gameBoard);
     api.updateGame(tileClicked, player, over);
-    console.log(tileClicked,player,over);
+    winCondition(gameBoard);
+    console.log(gameBoard);
 };
 
 Array.prototype.insert = function (index, item) {
@@ -46,32 +46,32 @@ Array.prototype.insert = function (index, item) {
 
 const winCondition = function(gameBoard){
   //across for x
-if (((gameBoard[0] === "X") && (gameBoard[1] === "X") && (gameBoard[2] === "X"))||
-((gameBoard[3] === "X") && (gameBoard[4] === "X") && (gameBoard[5] === "X")) ||
-((gameBoard[6] === "X") && (gameBoard[7] === "X") && (gameBoard[8] === "X")) ||
+if (((gameBoard[0] === "x") && (gameBoard[1] === "x") && (gameBoard[2] === "x"))||
+((gameBoard[3] === "x") && (gameBoard[4] === "x") && (gameBoard[5] === "x")) ||
+((gameBoard[6] === "x") && (gameBoard[7] === "x") && (gameBoard[8] === "x")) ||
 //down for x
-((gameBoard[0] === "X") && (gameBoard[3] === "X") && (gameBoard[6] === "X")) ||
-((gameBoard[1] === "X") && (gameBoard[4] === "X") && (gameBoard[7] === "X")) ||
-((gameBoard[2] === "X") && (gameBoard[5] === "X") && (gameBoard[8] === "X")) ||
+((gameBoard[0] === "x") && (gameBoard[3] === "x") && (gameBoard[6] === "x")) ||
+((gameBoard[1] === "x") && (gameBoard[4] === "x") && (gameBoard[7] === "x")) ||
+((gameBoard[2] === "x") && (gameBoard[5] === "x") && (gameBoard[8] === "x")) ||
 //diag for x
-((gameBoard[0] === "X") && (gameBoard[4] === "X") && (gameBoard[8] === "X")) ||
-((gameBoard[2] === "X") && (gameBoard[4] === "X") && (gameBoard[6] === "X"))) {
+((gameBoard[0] === "x") && (gameBoard[4] === "x") && (gameBoard[8] === "x")) ||
+((gameBoard[2] === "x") && (gameBoard[4] === "x") && (gameBoard[6] === "x"))) {
   document.getElementById('player-wins').innerHTML = "Player X Wins!";
   $('.tile').off('click');
   over = true;
   return true;
 }
 else if
-(((gameBoard[0] === "O") && (gameBoard[1] === "O") && (gameBoard[2] === "O"))||
-((gameBoard[3] === "O") && (gameBoard[4] === "O") && (gameBoard[5] === "O")) ||
-((gameBoard[6] === "O") && (gameBoard[7] === "O") && (gameBoard[8] === "O")) ||
+(((gameBoard[0] === "o") && (gameBoard[1] === "o") && (gameBoard[2] === "o"))||
+((gameBoard[3] === "o") && (gameBoard[4] === "o") && (gameBoard[5] === "o")) ||
+((gameBoard[6] === "o") && (gameBoard[7] === "o") && (gameBoard[8] === "o")) ||
 //down for x
-((gameBoard[0] === "O") && (gameBoard[3] === "O") && (gameBoard[6] === "O")) ||
-((gameBoard[1] === "O") && (gameBoard[4] === "O") && (gameBoard[7] === "O")) ||
-((gameBoard[2] === "O") && (gameBoard[5] === "O") && (gameBoard[8] === "O")) ||
+((gameBoard[0] === "o") && (gameBoard[3] === "o") && (gameBoard[6] === "o")) ||
+((gameBoard[1] === "o") && (gameBoard[4] === "o") && (gameBoard[7] === "o")) ||
+((gameBoard[2] === "o") && (gameBoard[5] === "o") && (gameBoard[8] === "o")) ||
 //diag for x
-((gameBoard[0] === "O") && (gameBoard[4] === "O") && (gameBoard[8] === "O")) ||
-((gameBoard[2] === "O") && (gameBoard[4] === "O") && (gameBoard[6] === "O"))) {
+((gameBoard[0] === "o") && (gameBoard[4] === "o") && (gameBoard[8] === "o")) ||
+((gameBoard[2] === "o") && (gameBoard[4] === "o") && (gameBoard[6] === "o"))) {
   document.getElementById('player-wins').innerHTML = "Player O Wins!";
   $('.tile').off('click');
   over = true;

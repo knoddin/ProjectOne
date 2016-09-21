@@ -14,9 +14,10 @@ h1 {
   text-align: center;
 }
 
-.game-data {
-  float:right;
-}
+// .game-data {
+//   color: $text-color;
+//   float: right;
+// }
 
 #player-wins {
   text-align: center;
@@ -43,11 +44,12 @@ h1 {
   border: 5px solid $border-color;
   border-radius: 10px;
   border-width: medium;
+  color: $text-color;
   float: left;
+  font-size: 72px;
   height: 150px;
   margin: 2%;
-  padding-top: 5%;
+  padding-top: 3%;
   text-align: center;
-  text-color: $text-color;
   width: 150px;
 }
