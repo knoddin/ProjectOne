@@ -11,15 +11,16 @@ const onSignUp = function (event) {
   api.signUp(data)
     .done(ui.success)
     .fail(ui.failure);
+    $('#signUp').modal('hide');
 };
 
 const onSignIn = function (event) {
   event.preventDefault();
   let data = getFormFields(event.target);
-
   api.signIn(data)
     .done(ui.signInSuccess)
     .fail(ui.failure);
+    $('#signIn').modal('hide');
 };
 
 const onChangePassword = function (event) {
@@ -29,6 +30,7 @@ const onChangePassword = function (event) {
   api.changePassword(data)
     .done(ui.changePasswordSuccess)
     .fail(ui.failure);
+    $('#changePassword').modal('hide');
 };
 
 const onSignOut = function (event) {
