@@ -9,7 +9,6 @@ let gameBoard = ["","","","","","","","",""];
 let turns = 0;
 let over = false;
 let player = "x";
-let games = 0;
 
 
 let gameboardID = document.getElementById("game-board");
@@ -108,8 +107,9 @@ const onNewGame = function(event){
     api.newGame(data)
     .done(ui.newGameSuccess)
     .fail(ui.failure);
-    games++;
-    console.log(games);
+    api.displayGames(data.id)
+    .done(ui.displaySuccess)
+    .fail(ui.failure);
 };
 
 

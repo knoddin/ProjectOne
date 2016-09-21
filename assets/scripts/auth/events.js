@@ -42,6 +42,7 @@ const onSignOut = function (event) {
     $('#signOut').modal('hide');
 };
 
+
 const addHandlers = () => {
   $('#sign-up').on('submit', onSignUp);
   $('#sign-in').on('submit', onSignIn);

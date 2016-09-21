@@ -3,12 +3,18 @@
 const app = require('../app');
 
 const newGameSuccess = (data) => {
-  console.log(data.game);
-  console.log("new game success");
   app.game = data.game;
 };
 
 const failure = (error) => {
+};
+
+const success = (data) => {
+};
+
+const displaySuccess = () => {
+  let allGames = games.length;
+  console.log(allGames);
 };
 
 const updateGameSuccess = () => {
@@ -17,5 +23,7 @@ const updateGameSuccess = () => {
 module.exports = {
   newGameSuccess,
   failure,
+  success,
+  displaySuccess,
   updateGameSuccess
 };

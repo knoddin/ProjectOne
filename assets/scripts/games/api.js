@@ -3,7 +3,6 @@
 const app = require('../app');
 
 const newGame = (data) =>{
-  console.log("i am in newGame");
   return $.ajax({
     url: app.host + '/games',
     method: 'POST',
@@ -33,7 +32,19 @@ const updateGame = (tileClicked, player, over) => {
   }}
 );};
 
+const displayGames = function(){
+  return $.ajax({
+    url: app.host + '/games',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + app.user.token,
+    }
+  });
+};
+
+
 module.exports = {
   newGame,
-  updateGame
+  updateGame,
+  displayGames
 };
