@@ -9,6 +9,7 @@ let gameBoard = ["","","","","","","","",""];
 let turns = 0;
 let over = false;
 let player = "x";
+let games = 0;
 
 
 let gameboardID = document.getElementById("game-board");
@@ -36,7 +37,6 @@ const onClick = function(){
     turns++;
     api.updateGame(tileClicked, player, over);
     winCondition(gameBoard);
-    console.log(gameBoard);
 };
 
 Array.prototype.insert = function (index, item) {
@@ -108,6 +108,8 @@ const onNewGame = function(event){
     api.newGame(data)
     .done(ui.newGameSuccess)
     .fail(ui.failure);
+    games++;
+    console.log(games);
 };
 
 
