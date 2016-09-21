@@ -12,8 +12,8 @@ const failure = (error) => {
 const success = (data) => {
 };
 
-const displaySuccess = () => {
-  let allGames = games.length;
+const displaySuccess = (data) => {
+  let allGames = data.games.length;
   console.log(allGames);
 };
 
