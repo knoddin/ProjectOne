@@ -11,5 +11,4 @@ $(document).ready(function () {
   handlers.createBoard();
   handlers.onClick(event);
   handlers.addGameHandlers();
-  handlers.winCondition();
 });

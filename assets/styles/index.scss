@@ -3,6 +3,9 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 
 @import './colors';
 
+body {
+  background-color: $background-color;
+}
 
 h1 {
   font-family: sans-serif;
@@ -14,6 +17,12 @@ h1 {
 #player-wins {
   text-align: center;
   font-size: 40px;
+}
+
+.btn-primary {
+  background-color: $background-color;
+  border-color: $background-color;
+  color: $text-color;
 }
 
 .game-board {

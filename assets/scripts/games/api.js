@@ -15,7 +15,6 @@ const newGame = (data) =>{
 };
 
 const updateGame = (tileClicked, player, over) => {
-  console.log(tileClicked, player, over);
   return $.ajax({
     url: app.host + '/games/' + app.game.id,
     method: 'PATCH',

@@ -8,7 +8,7 @@ const ui = require('./games/ui');
 let gameBoard = ["","","","","","","","",""];
 let turns = 0;
 let over = false;
-let player;
+let player = "x";
 
 
 let gameboardID = document.getElementById("game-board");
@@ -26,16 +26,17 @@ const createBoard = function() {
 const onClick = function(){
   let tileClicked = $(this).attr('data-id');
   if (turns % 2 === 0) {
-      player = 'X';
+      player = "x";
     }
     else {
-      player = 'O';
+      player = "o";
     }
     $(this).html(player);
     gameBoard.insert(tileClicked, player);
     turns++;
-    // api.updateGame(tileClicked, player, over);
     winCondition(gameBoard);
+    // api.updateGame(tileClicked, player, over);
+    console.log(tileClicked,player,over);
 };
 
 Array.prototype.insert = function (index, item) {
@@ -97,8 +98,6 @@ const clearBoard = function() {
   gameBoard.splice(0,9,"","","","","","","","","");
   turns = 0;
   createBoard(event);
-  console.log("i am in clear");
-  console.log(gameBoard);
 };
 
 //this will happen only after sign in
@@ -111,14 +110,8 @@ const onNewGame = function(event){
     .fail(ui.failure);
 };
 
-// const onUpdateGame = function(index, value, over){
-//   api.updateGame(index, value, over)
-//   .done(ui.updateGameSuccess)
-//   .fail(ui.failure);
-// };
 
 const addGameHandlers = () => {
-  $('#clear-board').on('click', clearBoard);
   $('#new-game').on('click', onNewGame);
 };
 
@@ -129,5 +122,4 @@ module.exports = {
   getFormFields,
   addGameHandlers,
   winCondition,
-  // onUpdateGame,
 };
