@@ -4,6 +4,7 @@ const getFormFields = require('../../../lib/get-form-fields');
 
 const api = require('./api');
 const ui = require('./ui');
+const main = require('../maingame')
 
 const onSignUp = function (event) {
   event.preventDefault();
@@ -38,6 +39,7 @@ const onSignOut = function (event) {
   api.signOut()
     .done(ui.signOutSuccess)
     .fail(ui.failure);
+    $('#signOut').modal('hide');
 };
 
 const addHandlers = () => {
