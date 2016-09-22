@@ -14,10 +14,8 @@ const success = (data) => {
 
 const displaySuccess = (data) => {
   let allGames = data.games.length;
+  $('#number-games').text(allGames);
   console.log(allGames);
-};
-
-const updateGameSuccess = () => {
 };
 
 module.exports = {
@@ -25,5 +23,4 @@ module.exports = {
   failure,
   success,
   displaySuccess,
-  updateGameSuccess
 };
