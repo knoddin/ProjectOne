@@ -24,7 +24,9 @@ const onSignIn = function (event) {
     $('#signIn').modal('hide');
     $('#game-board').show("fast");
     $('#new-game').show("fast");
-    $('.change').show("fast");
+    $('.game-data').show("fast");
+    $('.change-password').show("fast");
+    $('.ticTacToe').hide("fast");
 };
 
 const onChangePassword = function (event) {
@@ -43,6 +45,11 @@ const onSignOut = function (event) {
     .done(ui.signOutSuccess)
     .fail(ui.failure);
     $('#signOut').modal('hide');
+    $('#game-board').hide("fast");
+    $('#new-game').hide("fast");
+    $('.ticTacToe').show("fast");
+    $('.game-data').hide("fast");
+    $('#player-wins').hide("fast");
 };
 
 
