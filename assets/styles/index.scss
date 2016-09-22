@@ -16,7 +16,9 @@ h1 {
 
 .game-data {
   color: $text-color;
-  float: right;
+  float: left;
+  text-align: center;
+  width: 25%;
 }
 
 #player-wins {

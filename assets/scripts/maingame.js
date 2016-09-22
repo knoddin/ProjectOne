@@ -107,7 +107,7 @@ const onNewGame = function(event){
     api.newGame(data)
     .done(ui.newGameSuccess)
     .fail(ui.failure);
-    api.displayGames(data.id)
+    api.displayGames(data)
     .done(ui.displaySuccess)
     .fail(ui.failure);
 };

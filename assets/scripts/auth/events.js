@@ -22,6 +22,8 @@ const onSignIn = function (event) {
     .done(ui.signInSuccess)
     .fail(ui.failure);
     $('#signIn').modal('hide');
+    $('#game-board').show("fast");
+    $('#new-game').show("fast");
 };
 
 const onChangePassword = function (event) {

@@ -14,8 +14,7 @@ const success = (data) => {
 
 const displaySuccess = (data) => {
   let allGames = data.games.length;
-  $('#number-games').text(allGames);
-  console.log(allGames);
+  $('#number-games').text('Total Games for Player X: ' + allGames);
 };
 
 module.exports = {
