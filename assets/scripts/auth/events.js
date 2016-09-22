@@ -24,6 +24,7 @@ const onSignIn = function (event) {
     $('#signIn').modal('hide');
     $('#game-board').show("fast");
     $('#new-game').show("fast");
+    $('.change').show("fast");
 };
 
 const onChangePassword = function (event) {
