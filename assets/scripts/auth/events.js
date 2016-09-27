@@ -20,8 +20,7 @@ const onSignIn = function (event) {
   let data = getFormFields(event.target);
   api.signIn(data)
     .done(ui.signInSuccess)
-    .fail(ui.failure);
-    $('#signIn').modal('hide');
+    .fail(ui.signInFailure);
     $('#game-board').show("fast");
     $('#new-game').show("fast");
     $('.game-data').show("fast");
