@@ -97,6 +97,7 @@ const clearBoard = function() {
   $('#player-wins').empty();
   gameBoard.splice(0,9,"","","","","","","","","");
   turns = 0;
+  over = false;
   createBoard(event);
 };
 
