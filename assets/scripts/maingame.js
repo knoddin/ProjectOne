@@ -110,6 +110,7 @@ const onNewGame = function(event){
     api.displayGames(data)
     .done(ui.displaySuccess)
     .fail(ui.failure);
+    $('#game-board').show("fast");
 };
 
 

@@ -21,7 +21,6 @@ const onSignIn = function (event) {
   api.signIn(data)
     .done(ui.signInSuccess)
     .fail(ui.signInFailure);
-    $('#game-board').show("fast");
     $('#new-game').show("fast");
     $('.game-data').show("fast");
     $('.change-password').show("fast");
