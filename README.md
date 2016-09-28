@@ -1,7 +1,7 @@
 ```md
 new readme.
 
-Tic Tac Toe URL:
+Tic Tac Toe URL: knoddin.github.io/ProjectOne
 
 Technologies Used:
 HTML
@@ -77,7 +77,7 @@ several functions that each served a specific purpose. Primary functions include
   5)I was able to create a "New Game" button, which assuming a user is signed in, posts an empty new game
   to the API for game data to be collected upon play.
 
-  Improvements to be made:
+  Improvements to be made, version 1.0:
   1)After a POST of a new game (following sign-in), I faced problems when attempting to PATCH new game data to the
   the newly created game. Since there are no data currently being added during game play, I am unable to retrieve
   any data. Future iterations will fix this problem.
@@ -96,6 +96,13 @@ several functions that each served a specific purpose. Primary functions include
 
   6)Stick to one problem at a time. My best work was done when focusing on one task at a time.
 
-
+  Improvements made since version 1.0:
+  1) A PATCH request was able to be made by updating the game status in the API.
+  2) A GET request was able to be made by accessing the api and retrieving number of games that a player has played.
+  3) Modal buttons hide and show depending on whether a user is signed in or signed out.
+  4) The game board is hidden or shown depending on whether a user is signed in or signed out.
+  5) The new game buttons is hidden or shown depending on whether a user is signed in or signed out.
+  6) The game data is hidden or shown depending on whether a user is signed in or signed out.
+  7) SCSS additions have been made to clean up the appearance of the app.
 
 ```;

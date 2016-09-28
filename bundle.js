@@ -65,6 +65,7 @@ webpackJsonp([0],[
 	    newTile.setAttribute('data-id', i);
 	    gameboardID.appendChild(newTile);
 	    $(newTile).one('click', onClick);
+	    $('#signOut').modal('hide');
 	  }
 	};
 
@@ -123,6 +124,7 @@ webpackJsonp([0],[
 	  $('#player-wins').empty();
 	  gameBoard.splice(0, 9, "", "", "", "", "", "", "", "", "");
 	  turns = 0;
+	  over = false;
 	  createBoard(event);
 	};
 
@@ -324,17 +326,12 @@ webpackJsonp([0],[
 	  event.preventDefault();
 	  var data = getFormFields(event.target);
 	  api.signUp(data).done(ui.success).fail(ui.failure);
-	  $('#signUp').modal('hide');
 	};
 
 	var onSignIn = function onSignIn(event) {
 	  event.preventDefault();
 	  var data = getFormFields(event.target);
 	  api.signIn(data).done(ui.signInSuccess).fail(ui.signInFailure);
-	  $('#new-game').show("fast");
-	  $('.game-data').show("fast");
-	  $('.change-password').show("fast");
-	  $('.ticTacToe').hide("fast");
 	};
 
 	var onChangePassword = function onChangePassword(event) {
@@ -342,18 +339,11 @@ webpackJsonp([0],[
 	  var data = getFormFields(event.target);
 
 	  api.changePassword(data).done(ui.changePasswordSuccess).fail(ui.failure);
-	  $('#changePassword').modal('hide');
 	};
 
-	var onSignOut = function onSignOut(event) {
+	var onSignOut = function onSignOut() {
 	  event.preventDefault();
 	  api.signOut().done(ui.signOutSuccess).fail(ui.failure);
-	  $('#signOut').modal('hide');
-	  $('#game-board').hide("fast");
-	  $('#new-game').hide("fast");
-	  $('.ticTacToe').show("fast");
-	  $('.game-data').hide("fast");
-	  $('#player-wins').hide("fast");
 	};
 
 	var addHandlers = function addHandlers() {
@@ -435,12 +425,13 @@ webpackJsonp([0],[
 
 	var success = function success(data) {
 	  $('#signInFail').html('Sign In!');
+	  $('#signUp').modal('hide');
 	};
 
 	var failure = function failure(error) {};
 
 	var signInFailure = function signInFailure() {
-	  $('#signInFail').html('Oops! You need to sign up first!');
+	  $('#signInFail').html('Oops! Check your credentials or sign up!');
 	  $('#signInLabel').text(' ');
 	  $('#game-board').hide("fast");
 	  $('#new-game').hide("fast");
@@ -450,6 +441,13 @@ webpackJsonp([0],[
 	var signInSuccess = function signInSuccess(data) {
 	  app.user = data.user;
 	  $('#signIn').modal('hide');
+	  $('#signOutBut').show("fast");
+	  $('#changePasswordBut').show("fast");
+	  $('#new-game').show("fast");
+	  $('.game-data').show("fast");
+	  $('.change-password').show("fast");
+	  $('.ticTacToe').hide("fast");
+	  $('#player-wins').show("fast");
 	};
 
 	var onUpdateSuccess = function onUpdateSuccess(data) {
@@ -458,9 +456,20 @@ webpackJsonp([0],[
 
 	var signOutSuccess = function signOutSuccess() {
 	  app.user = null;
+	  $('#signOutBut').hide("fast");
+	  $('#changePasswordBut').hide("fast");
+	  $('#signOut').modal('hide');
+	  $('#game-board').hide("fast");
+	  $('#new-game').hide("fast");
+	  $('.ticTacToe').show("fast");
+	  $('.game-data').hide("fast");
+	  $('#player-wins').hide("fast");
+	  $('#player-wins').text(' ');
 	};
 
-	var changePasswordSuccess = function changePasswordSuccess() {};
+	var changePasswordSuccess = function changePasswordSuccess() {
+	  $('#changePassword').modal('hide');
+	};
 
 	module.exports = {
 	  failure: failure,
