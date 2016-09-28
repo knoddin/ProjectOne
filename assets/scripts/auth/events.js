@@ -12,7 +12,6 @@ const onSignUp = function (event) {
   api.signUp(data)
     .done(ui.success)
     .fail(ui.failure);
-    $('#signUp').modal('hide');
 };
 
 const onSignIn = function (event) {
@@ -21,10 +20,6 @@ const onSignIn = function (event) {
   api.signIn(data)
     .done(ui.signInSuccess)
     .fail(ui.signInFailure);
-    $('#new-game').show("fast");
-    $('.game-data').show("fast");
-    $('.change-password').show("fast");
-    $('.ticTacToe').hide("fast");
 };
 
 const onChangePassword = function (event) {
@@ -34,20 +29,13 @@ const onChangePassword = function (event) {
   api.changePassword(data)
     .done(ui.changePasswordSuccess)
     .fail(ui.failure);
-    $('#changePassword').modal('hide');
 };
 
-const onSignOut = function (event) {
+const onSignOut = function () {
   event.preventDefault();
   api.signOut()
     .done(ui.signOutSuccess)
     .fail(ui.failure);
-    $('#signOut').modal('hide');
-    $('#game-board').hide("fast");
-    $('#new-game').hide("fast");
-    $('.ticTacToe').show("fast");
-    $('.game-data').hide("fast");
-    $('#player-wins').hide("fast");
 };
 
 

@@ -20,6 +20,7 @@ const createBoard = function() {
     newTile.setAttribute('data-id', i);
     gameboardID.appendChild(newTile);
     $(newTile).one('click', onClick);
+    $('#signOut').modal('hide');
   }
 };
 
@@ -96,6 +97,7 @@ const clearBoard = function() {
   $('#player-wins').empty();
   gameBoard.splice(0,9,"","","","","","","","","");
   turns = 0;
+  over = false;
   createBoard(event);
 };
 
