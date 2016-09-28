@@ -20,6 +20,7 @@ const createBoard = function() {
     newTile.setAttribute('data-id', i);
     gameboardID.appendChild(newTile);
     $(newTile).one('click', onClick);
+    $('#signOut').modal('hide');
   }
 };
 

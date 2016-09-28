@@ -21,6 +21,8 @@ const onSignIn = function (event) {
   api.signIn(data)
     .done(ui.signInSuccess)
     .fail(ui.signInFailure);
+    $('#signOutBut').show("fast");
+    $('#changePasswordBut').show("fast");
     $('#new-game').show("fast");
     $('.game-data').show("fast");
     $('.change-password').show("fast");
@@ -42,6 +44,8 @@ const onSignOut = function (event) {
   api.signOut()
     .done(ui.signOutSuccess)
     .fail(ui.failure);
+    $('#signOutBut').hide("fast");
+    $('#changePasswordBut').hide("fast");
     $('#signOut').modal('hide');
     $('#game-board').hide("fast");
     $('#new-game').hide("fast");
