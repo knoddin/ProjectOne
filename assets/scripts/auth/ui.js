@@ -3,6 +3,7 @@
 const app = require('../app');
 
 const success = (data) => {
+  $('#signInFail').html('Sign In!');
 };
 
 const failure = (error) => {
